@@ -9,3 +9,5 @@ tools/_temp_*
 .coverage
 coverage.xml
 .mypy_cache
+.vscode/*
+!.vscode/settings.json
