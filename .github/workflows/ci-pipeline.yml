@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+  schedule:
+  # this string has quotes because '*' is a special character in YAML 
+  - cron:  '0 3 */3 * *'  # Weekly build
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env: 
+      CODECOV_TOKEN: $(CODECOV_TOKEN)
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Pull Docker image
+        run: docker pull lazka/pgi-docgen:v3
+
+      - name: Build Docker image
+        run: cd docker && bash -x ./build-image.sh
+      
+      - name: Run Tests
+        run: cd docker && bash -x ./test.sh
+      
+      - name: Build Docs
+        run: cd docker && bash -x ./build-docs.sh
+
+      - name: Sphinx Build
+        run: cd docker && bash -x ./build-docs-sphinx.sh
+      
+      - name: Stubs Build
+        run: cd docker && bash -x ./build-stubs.sh
+      
+
+
