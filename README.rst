@@ -39,6 +39,15 @@ How do I get started?
 
 The resulting docs can be found in ``_docs/_build``
 
+You can also generate stubs.
+::
+
+    # API stubs for Gtk/Gst:
+    ./tools/build-stubs.sh Gtk-3.0 Gst-1.0
+
+The resulting docs can be found in ``_stubs``
+Note, however, that the quality of the stubs is not yet production ready.
+
 
 How do I build docs for private libraries?
 ------------------------------------------

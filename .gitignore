@@ -1,5 +1,7 @@
 *.pyc
 _docs
+_stubs
+_debian_build_cache
 pgi
 _venv
 _docs*

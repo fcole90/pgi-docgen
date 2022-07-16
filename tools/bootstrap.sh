@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # This sets up a virtual python environment and installs all dependencies
 # into "_venv". If this directory exists it will only start the virtual env.
